@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRB TopUp - Select Package</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #0066ff; --bg: #f4f6f9; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 30px; }
+        .header { background: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .back-btn { font-size: 18px; color: #333; text-decoration: none; }
+        .page-title { font-weight: bold; font-size: 16px; color: #1e293b; }
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        
+        .box { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+        .box-title { font-size: 13px; font-weight: bold; color: #4a5568; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; box-sizing: border-box; outline: none; }
+        .input-group input:focus { border-color: var(--primary); }
+        
+        .pkg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .pkg-card { border: 2px solid #e2e8f0; border-radius: 10px; padding: 12px; text-align: center; cursor: pointer; background: #fff; transition: 0.2s; }
+        .pkg-card.active { border-color: var(--primary); background: #eef5ff; }
+        .pkg-title { font-weight: bold; font-size: 13px; color: #1a202c; }
+        .pkg-price { font-size: 12px; color: var(--primary); font-weight: bold; margin-top: 4px; }
+        
+        .buy-btn { width: 100%; background: var(--primary); color: #fff; border: none; padding: 14px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="page-title">Free Fire Diamond TopUp</div>
+    </div>
+
+    <div class="container">
+        <!-- Account Info -->
+        <div class="box">
+            <div class="box-title"><i class="fa-solid fa-id-card" style="color: var(--primary);"></i> ১. অ্যাকাউন্ট তথ্য দিন</div>
+            <div class="input-group">
+                <input type="number" id="playerUid" placeholder="Enter Player Account ID (UID)...">
+            </div>
+        </div>
+
+        <!-- Package Selection -->
+        <div class="box">
+            <div class="box-title"><i class="fa-solid fa-gem" style="color: var(--primary);"></i> ২. প্যাকেজ নির্বাচন করুন</div>
+            <div class="pkg-grid">
+                <div class="pkg-card active" onclick="selectPkg(this, '115 Diamonds', 80)">
+                    <div class="pkg-title">115 Diamonds</div>
+                    <div class="pkg-price">৳ 80</div>
+                </div>
+                <div class="pkg-card" onclick="selectPkg(this, '240 Diamonds', 160)">
+                    <div class="pkg-title">240 Diamonds</div>
+                    <div class="pkg-price">৳ 160</div>
+                </div>
+                <div class="pkg-card" onclick="selectPkg(this, '610 Diamonds', 400)">
+                    <div class="pkg-title">610 Diamonds</div>
+                    <div class="pkg-price">৳ 400</div>
+                </div>
+                <div class="pkg-card" onclick="selectPkg(this, 'Weekly Membership', 170)">
+                    <div class="pkg-title">Weekly Membership</div>
+                    <div class="pkg-price">৳ 170</div>
+                </div>
+            </div>
+
+            <button class="buy-btn" onclick="goToCheckout()"><i class="fa-solid fa-cart-shopping"></i> Buy Now</button>
+        </div>
+    </div>
+
+    <script>
+        let selectedPackage = '115 Diamonds';
+        let selectedPrice = 80;
+
+        function selectPkg(element, title, price) {
+            document.querySelectorAll('.pkg-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+            selectedPackage = title;
+            selectedPrice = price;
+        }
+
+        function goToCheckout() {
+            const uid = document.getElementById('playerUid').value;
+            if(!uid) {
+                alert('দয়া করে প্লেয়ার আইডি (UID) দিন!');
+                return;
+            }
+            // checkout.html পেজে তথ্য পাঠিয়ে দেওয়া
+            window.location.href = `checkout.html?pkg=${encodeURIComponent(selectedPackage)}&price=${selectedPrice}&uid=${uid}`;
+        }
+    </script>
+</body>
+          </html>
+  
