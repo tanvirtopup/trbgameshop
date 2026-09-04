@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRB TopUp - Professional Game Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Swiper CSS for Slider -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root { --primary: #0066ff; --bg: #f4f6f9; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 70px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
         .header { background: #fff; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .logo { font-weight: bold; font-size: 20px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .user-actions { display: flex; gap: 10px; align-items: center; }
@@ -18,23 +17,27 @@
         .notice-tag { background: #0066ff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
         .container { padding: 15px; max-width: 600px; margin: 0 auto; }
         
-        /* Slider Styles */
+        /* Dynamic Slider */
         .slider-container { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .swiper-slide img { width: 100%; height: 160px; object-fit: cover; display: block; }
 
         .quick-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
         .link-card { background: #fff; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.03); text-decoration: none; color: #333; font-size: 12px; font-weight: 600; }
         .link-card i { font-size: 20px; margin-bottom: 5px; display: block; color: var(--primary); }
-        .section-title { font-size: 16px; font-weight: bold; color: #1e293b; margin: 15px 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .section-title { font-size: 15px; font-weight: bold; color: #1e293b; margin: 20px 0 10px 0; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
         .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center; padding-bottom: 10px; position: relative; border: 1px solid #edf2f7; cursor: pointer; }
-        .product-card img { width: 100%; height: 100px; object-fit: cover; }
+        .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center; padding-bottom: 10px; position: relative; border: 1px solid #edf2f7; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .product-card img { width: 100%; height: 95px; object-fit: cover; }
         .badge { position: absolute; top: 5px; left: 5px; background: #ff3b30; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
-        .product-title { font-size: 12px; font-weight: bold; margin: 8px 4px 2px 4px; color: #1a202c; }
+        .product-title { font-size: 11px; font-weight: bold; margin: 6px 4px 2px 4px; color: #1a202c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .product-sub { font-size: 10px; color: #718096; }
         
-        /* Bottom Nav Bar */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); border-top: 1px solid #edf2f7; }
+        /* Floating Support Button */
+        .floating-support { position: fixed; bottom: 75px; right: 15px; background: #25D366; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 99; text-decoration: none; }
+
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); border-top: 1px solid #edf2f7; z-index: 100; }
         .nav-item { text-align: center; color: #718096; text-decoration: none; font-size: 11px; }
         .nav-item i { font-size: 18px; display: block; margin-bottom: 2px; }
         .nav-item.active { color: var(--primary); font-weight: bold; }
@@ -58,72 +61,36 @@
     </div>
 
     <div class="container">
-        <!-- Dynamic Image Slider -->
+        <!-- Banner Slider -->
         <div class="slider-container">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper" id="slider-wrapper">
-                    <!-- Default Demo Slider (Replace with Firestore data) -->
-                    <div class="swiper-slide">
-                        <a href="#"><img src="https://via.placeholder.com/600x200/0066ff/ffffff?text=Special+Offer+Banner" alt="Banner"></a>
-                    </div>
+                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/600x200/0066ff/ffffff?text=Special+Offer+Banner" alt="Banner"></a></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
 
-        <!-- Quick Support Links -->
+        <!-- Quick Links -->
         <div class="quick-links">
-            <a href="#" class="link-card"><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
-            <a href="#" class="link-card"><i class="fa-brands fa-telegram" style="color:#0088cc;"></i>Telegram</a>
+            <a href="https://wa.me/8801700000000" class="link-card" target="_blank"><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
+            <a href="https://t.me/yourtelegram" class="link-card" target="_blank"><i class="fa-brands fa-telegram" style="color:#0088cc;"></i>Telegram</a>
             <a href="#" class="link-card"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i>Tutorial</a>
         </div>
 
-        <!-- Category 1: Free Fire Services -->
-        <div class="section-title"><i class="fa-solid fa-fire" style="color:#e53e3e;"></i> Free Fire Services</div>
-        <div class="grid-container">
-            <div class="product-card" onclick="location.href='product.html?id=ff_uid'">
-                <span class="badge">AUTO</span>
-                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=FF+UID" alt="FF UID">
-                <div class="product-title">FF UID TOPUP (BD)</div>
-                <div class="product-sub">Instant Delivery</div>
-            </div>
-            <div class="product-card" onclick="location.href='product.html?id=unipin'">
-                <span class="badge">AUTO</span>
-                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Unipin" alt="Unipin">
-                <div class="product-title">UNIPIN VOUCHER</div>
-                <div class="product-sub">Code System</div>
-            </div>
-            <div class="product-card" onclick="location.href='product.html?id=weekly'">
-                <span class="badge" style="background:#38a169;">BEST</span>
-                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Weekly" alt="Weekly">
-                <div class="product-title">WEEKLY / MONTHLY</div>
-                <div class="product-sub">In-Game / UID</div>
-            </div>
-            <div class="product-card" onclick="location.href='product.html?id=evo'">
-                <span class="badge">HOT</span>
-                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Evo+Access" alt="Evo">
-                <div class="product-title">EVO ACCESS PASS</div>
-                <div class="product-sub">Special Offer</div>
-            </div>
-        </div>
-
-        <!-- Category 2: Other Games & Services -->
-        <div class="section-title"><i class="fa-solid fa-cubes" style="color:#805ad5;"></i> Other Games & Vouchers</div>
-        <div class="grid-container">
-            <div class="product-card" onclick="location.href='product.html?id=pubg'">
-                <img src="https://via.placeholder.com/150/805ad5/ffffff?text=PUBG" alt="PUBG">
-                <div class="product-title">PUBG UC TOPUP</div>
-                <div class="product-sub">Global / BD</div>
-            </div>
-            <div class="product-card" onclick="location.href='product.html?id=ingame'">
-                <img src="https://via.placeholder.com/150/805ad5/ffffff?text=In-Game" alt="In-Game">
-                <div class="product-title">IN-GAME TOPUP</div>
-                <div class="product-sub">Password Login</div>
-            </div>
+        <!-- Dynamic Categories and Products Area -->
+        <div id="dynamic-categories">
+            <!-- ফায়ারবেস থেকে সব ক্যাটাগরি ও প্রোডাক্ট ডাইনামিকালি লোড হবে -->
+            <p style="text-align: center; color: #718096; font-size: 13px;">প্রোডাক্ট লোড হচ্ছে...</p>
         </div>
     </div>
 
-    <!-- Bottom Navigation Bar -->
+    <!-- Floating WhatsApp Support Icon -->
+    <a href="https://wa.me/8801700000000" class="floating-support" target="_blank" title="Live Support">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Bottom Nav -->
     <div class="bottom-nav">
         <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i>Home</a>
         <a href="add-fund.html" class="nav-item"><i class="fa-solid fa-wallet"></i>Add Fund</a>
@@ -132,18 +99,15 @@
         <a href="account.html" class="nav-item"><i class="fa-solid fa-user"></i>Account</a>
     </div>
 
-    <!-- Swiper Slider JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/app.js"></script>
 
-    <!-- Slider Initialization -->
     <script>
+        // Swiper Slider Init
         var swiper = new Swiper(".mySwiper", {
             loop: true,
             autoplay: { delay: 3000, disableOnInteraction: false },
@@ -151,4 +115,4 @@
         });
     </script>
 </body>
-                                       </html>
+</html>
