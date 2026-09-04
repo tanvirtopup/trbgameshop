@@ -3,116 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRB TopUp - Professional Game Shop</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <title>TRB TOPUP - Home</title>
     <style>
-        :root { --primary: #0066ff; --bg: #f4f6f9; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 80px; }
-        .header { background: #fff; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo { font-weight: bold; font-size: 20px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
-        .user-actions { display: flex; gap: 10px; align-items: center; }
-        .wallet-chip { background: #eef5ff; color: var(--primary); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
-        .notice-bar { background: #1e293b; color: #fff; padding: 8px 12px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
-        .notice-tag { background: #0066ff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f6f9; padding-bottom: 70px; }
+
+        /* Header Styles */
+        header { background: #0056b3; color: white; padding: 12px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 18px; font-weight: bold; }
+        .user-balance { background: #003d80; padding: 5px 12px; border-radius: 20px; font-size: 14px; }
+
+        /* Notice Bar */
+        .notice { background: #111; color: #fff; font-size: 13px; padding: 8px 12px; display: flex; align-items: center; }
+        .notice-tag { background: #007bff; padding: 2px 8px; border-radius: 4px; margin-right: 8px; font-weight: bold; }
+
         .container { padding: 15px; max-width: 600px; margin: 0 auto; }
-        
-        /* Dynamic Slider */
-        .slider-container { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .swiper-slide img { width: 100%; height: 160px; object-fit: cover; display: block; }
 
-        .quick-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
-        .link-card { background: #fff; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.03); text-decoration: none; color: #333; font-size: 12px; font-weight: 600; }
-        .link-card i { font-size: 20px; margin-bottom: 5px; display: block; color: var(--primary); }
-        
-        .section-title { font-size: 15px; font-weight: bold; color: #1e293b; margin: 20px 0 10px 0; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center; padding-bottom: 10px; position: relative; border: 1px solid #edf2f7; cursor: pointer; text-decoration: none; color: inherit; display: block; }
-        .product-card img { width: 100%; height: 95px; object-fit: cover; }
-        .badge { position: absolute; top: 5px; left: 5px; background: #ff3b30; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
-        .product-title { font-size: 11px; font-weight: bold; margin: 6px 4px 2px 4px; color: #1a202c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .product-sub { font-size: 10px; color: #718096; }
-        
-        /* Floating Support Button */
-        .floating-support { position: fixed; bottom: 75px; right: 15px; background: #25D366; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 99; text-decoration: none; }
+        /* Banner Slider */
+        .banner-container { width: 100%; height: 180px; background: #ddd; border-radius: 10px; overflow: hidden; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; }
+        .banner-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); border-top: 1px solid #edf2f7; z-index: 100; }
-        .nav-item { text-align: center; color: #718096; text-decoration: none; font-size: 11px; }
-        .nav-item i { font-size: 18px; display: block; margin-bottom: 2px; }
-        .nav-item.active { color: var(--primary); font-weight: bold; }
+        /* Quick Links */
+        .quick-links { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .link-box { background: white; width: 31%; text-align: center; padding: 12px 5px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-size: 13px; font-weight: bold; text-decoration: none; color: #333; }
+
+        /* Products Grid */
+        .section-title { font-size: 16px; margin-bottom: 10px; color: #333; }
+        .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .product-card { background: white; padding: 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .product-card h4 { font-size: 15px; color: #333; margin-bottom: 5px; }
+        .product-card p { color: #28a745; font-weight: bold; margin-bottom: 10px; }
+        .buy-btn { background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; width: 100%; }
+
+        /* Bottom Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; border-top: 1px solid #ddd; }
+        .nav-item { text-align: center; color: #666; font-size: 12px; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <!-- Header -->
-    <div class="header">
-        <div class="logo"><i class="fa-solid fa-gamepad"></i> TRB TOPUP</div>
-        <div class="user-actions">
-            <div class="wallet-chip"><i class="fa-solid fa-wallet"></i> <span id="walletBalance">৳ 0</span></div>
-            <button onclick="googleLogin()" style="border:none; background:none; font-size:22px; color:#f59e0b; cursor:pointer;"><i class="fa-solid fa-circle-user"></i></button>
-        </div>
-    </div>
+    <header>
+        <div class="logo">🎮 TRB TOPUP</div>
+        <div class="user-balance">৳ 0</div>
+    </header>
 
     <!-- Notice Bar -->
-    <div class="notice-bar">
+    <div class="notice">
         <span class="notice-tag">Notice</span>
-        <marquee behavior="scroll" direction="left">পেমেন্টে ৫ থেকে ৩ সেকেন্ডের মধ্যে ইন্সট্যান্ট টপআপ কমপ্লিট হবে। যেকোনো সমস্যায় হোয়াটসঅ্যাপে মেসেজ দিন।</marquee>
+        <marquee>নেট ৫ থেকে ৩ সেকেন্ডের মধ্যে ইন্সট্যান্ট টপআপ কমপ্লিট</marquee>
     </div>
 
     <div class="container">
-        <!-- Banner Slider -->
-        <div class="slider-container">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper" id="slider-wrapper">
-                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/600x200/0066ff/ffffff?text=Special+Offer+Banner" alt="Banner"></a></div>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+        <!-- Banner/Slider Section -->
+        <div class="banner-container" id="bannerBox">
+            <p style="color: #666;">কোনো ব্যানার নেই</p>
         </div>
 
-        <!-- Quick Links -->
+        <!-- Social Quick Links -->
         <div class="quick-links">
-            <a href="https://wa.me/8801700000000" class="link-card" target="_blank"><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
-            <a href="https://t.me/yourtelegram" class="link-card" target="_blank"><i class="fa-brands fa-telegram" style="color:#0088cc;"></i>Telegram</a>
-            <a href="#" class="link-card"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i>Tutorial</a>
+            <a href="#" class="link-box">💬 WhatsApp</a>
+            <a href="#" class="link-box">✈️ Telegram</a>
+            <a href="#" class="link-box">▶️ Tutorial</a>
         </div>
 
-        <!-- Dynamic Categories and Products Area -->
-        <div id="dynamic-categories">
-            <!-- ফায়ারবেস থেকে সব ক্যাটাগরি ও প্রোডাক্ট ডাইনামিকালি লোড হবে -->
-            <p style="text-align: center; color: #718096; font-size: 13px;">প্রোডাক্ট লোড হচ্ছে...</p>
+        <!-- Dynamic Products List -->
+        <h3 class="section-title">টপ-আপ প্যাকেজ সমূহ</h3>
+        <div class="products-grid" id="productsGrid">
+            <p style="grid-column: span 2; text-align: center;">লোড হচ্ছে...</p>
         </div>
     </div>
 
-    <!-- Floating WhatsApp Support Icon -->
-    <a href="https://wa.me/8801700000000" class="floating-support" target="_blank" title="Live Support">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <!-- Bottom Nav -->
+    <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
-        <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i>Home</a>
-        <a href="add-fund.html" class="nav-item"><i class="fa-solid fa-wallet"></i>Add Fund</a>
-        <a href="orders.html" class="nav-item"><i class="fa-solid fa-list-check"></i>My Orders</a>
-        <a href="codes.html" class="nav-item"><i class="fa-solid fa-qrcode"></i>My Codes</a>
-        <a href="account.html" class="nav-item"><i class="fa-solid fa-user"></i>Account</a>
+        <a href="index.html" class="nav-item">🏠<br>Home</a>
+        <a href="#" class="nav-item">💳<br>Add Fund</a>
+        <a href="#" class="nav-item">📋<br>My Orders</a>
+        <a href="product.html" class="nav-item">🛒<br>Topup</a>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="js/firebase.js"></script>
-    <script src="js/app.js"></script>
+<script>
+    // পেজ লোড হলে অ্যাডমিন প্যানেলের ডাটা অটোমেটিক শো করবে
+    document.addEventListener('DOMContentLoaded', () => {
+        loadHomeData();
+    });
 
-    <script>
-        // Swiper Slider Init
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: { delay: 3000, disableOnInteraction: false },
-            pagination: { el: ".swiper-pagination", clickable: true },
-        });
-    </script>
+    function loadHomeData() {
+        // ১. স্লাইডার লোড করা
+        const sliders = JSON.parse(localStorage.getItem('admin_sliders') || '[]');
+        const bannerBox = document.getElementById('bannerBox');
+
+        if (sliders.length > 0) {
+            // সর্বশেষ আপলোড করা ব্যানারটি দেখাবে
+            bannerBox.innerHTML = `<img src="${sliders[sliders.length - 1].url}" alt="Banner">`;
+        } else {
+            bannerBox.innerHTML = `<p style="color: #888;">এডমিন প্যানেল থেকে স্লাইডার দিন</p>`;
+        }
+
+        // ২. প্রোডাক্ট লিস্ট লোড করা
+        const products = JSON.parse(localStorage.getItem('admin_products') || '[]');
+        const productsGrid = document.getElementById('productsGrid');
+
+        if (products.length > 0) {
+            productsGrid.innerHTML = products.map(item => `
+                <div class="product-card">
+                    <h4>${item.title}</h4>
+                    <p>৳ ${item.price}</p>
+                    <a href="product.html" class="buy-btn">Top Up</a>
+                </div>
+            `).join('');
+        } else {
+            productsGrid.innerHTML = `<p style="grid-column: span 2; text-align: center; color: #888;">এডমিন প্যানেল থেকে কোনো প্রোডাক্ট দেওয়া হয়নি!</p>`;
+        }
+    }
+</script>
+
 </body>
 </html>
