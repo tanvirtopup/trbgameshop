@@ -3,298 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRB GAME SHOP - Instant TopUp Platform</title>
-    <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>TRB TopUp - Professional Game Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        :root { --primary: #0066ff; --bg: #f4f6f9; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 70px; }
+        .header { background: #fff; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .logo { font-weight: bold; font-size: 20px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .user-actions { display: flex; gap: 10px; align-items: center; }
+        .wallet-chip { background: #eef5ff; color: var(--primary); padding: 6px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        .notice-bar { background: #1e293b; color: #fff; padding: 8px 12px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+        .notice-tag { background: #0066ff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+        .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        .quick-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .link-card { background: #fff; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.03); text-decoration: none; color: #333; font-size: 12px; font-weight: 600; }
+        .link-card i { font-size: 20px; margin-bottom: 5px; display: block; color: var(--primary); }
+        .section-title { font-size: 16px; font-weight: bold; color: #1e293b; margin: 15px 0 10px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .product-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.06); text-align: center; padding-bottom: 10px; position: relative; border: 1px solid #edf2f7; cursor: pointer; }
+        .product-card img { width: 100%; height: 100px; object-fit: cover; }
+        .badge { position: absolute; top: 5px; left: 5px; background: #ff3b30; color: #fff; font-size: 9px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .product-title { font-size: 12px; font-weight: bold; margin: 8px 4px 2px 4px; color: #1a202c; }
+        .product-sub { font-size: 10px; color: #718096; }
+        
+        /* Bottom Nav Bar */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; justify-content: space-around; padding: 8px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.08); border-top: 1px solid #edf2f7; }
+        .nav-item { text-align: center; color: #718096; text-decoration: none; font-size: 11px; }
+        .nav-item i { font-size: 18px; display: block; margin-bottom: 2px; }
+        .nav-item.active { color: var(--primary); font-weight: bold; }
+    </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header class="top-header">
-        <div class="header-container">
-            <div class="logo-area">
-                <i class="fa-solid fa-gamepad logo-icon"></i>
-                <span class="logo-text">TRB <span>TOPUP</span></span>
-            </div>
-            <div class="header-actions">
-                <div class="wallet-badge" id="userWalletDisplay">
-                    <i class="fa-solid fa-wallet"></i>
-                    <span id="walletBalance">৳ 0</span>
-                </div>
-                <button class="profile-btn" id="headerProfileBtn">
-                    <i class="fa-solid fa-user"></i>
-                </button>
-            </div>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo"><i class="fa-solid fa-gamepad"></i> TRB TOPUP</div>
+        <div class="user-actions">
+            <div class="wallet-chip"><i class="fa-solid fa-wallet"></i> <span id="walletBalance">৳ 0</span></div>
+            <button onclick="googleLogin()" style="border:none; background:none; font-size:22px; color:#f59e0b; cursor:pointer;"><i class="fa-solid fa-circle-user"></i></button>
         </div>
-    </header>
+    </div>
 
-    <!-- Main Container -->
-    <main class="main-content">
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <span class="notice-tag">Notice</span>
+        <marquee behavior="scroll" direction="left">পেমেন্টে ৫ থেকে ৩ সেকেন্ডের মধ্যে ইন্সট্যান্ট টপআপ কমপ্লিট হবে। যেকোনো সমস্যায় হোয়াটসঅ্যাপে মেসেজ দিন।</marquee>
+    </div>
 
-        <!-- Top Notice Bar -->
-        <div class="notice-wrapper">
-            <div class="notice-badge"><i class="fa-solid fa-bullhorn"></i> Notice</div>
-            <div class="notice-text-container">
-                <marquee behavior="scroll" direction="left" scrollamount="5">
-                    আমাদের সার্ভিস ২৪ ঘন্টা খোলা থাকে। অটো পেমেন্টে ১ থেকে ৩ সেকেন্ডের মধ্যে ইনস্ট্যান্ট আইডি কোড টপ-আপ পেয়ে যাবেন! যেকোনো সমস্যায় আমাদের ওয়াটসঅ্যাপে যোগাযোগ করুন।
-                </marquee>
-            </div>
-            <button class="notice-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="container">
+        <!-- Quick Support Links -->
+        <div class="quick-links">
+            <a href="#" class="link-card"><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
+            <a href="#" class="link-card"><i class="fa-brands fa-telegram" style="color:#0088cc;"></i>Telegram</a>
+            <a href="#" class="link-card"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i>Tutorial</a>
         </div>
 
-        <!-- Home Banner Slider Section -->
-        <section class="banner-section">
-            <div class="slider-container">
-                <div class="slide active">
-                    <img src="assets/images/banner1.jpg" alt="Instant Topup Banner">
-                </div>
+        <!-- Category 1: Free Fire Services -->
+        <div class="section-title"><i class="fa-solid fa-fire" style="color:#e53e3e;"></i> Free Fire Services</div>
+        <div class="grid-container">
+            <div class="product-card">
+                <span class="badge">AUTO</span>
+                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=FF+UID" alt="FF UID">
+                <div class="product-title">FF UID TOPUP (BD)</div>
+                <div class="product-sub">Instant Delivery</div>
             </div>
-            <div class="slider-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
+            <div class="product-card">
+                <span class="badge">AUTO</span>
+                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Unipin" alt="Unipin">
+                <div class="product-title">UNIPIN VOUCHER</div>
+                <div class="product-sub">Code System</div>
             </div>
-        </section>
-
-        <!-- Social Quick Links -->
-        <section class="quick-social-grid">
-            <a href="#" class="social-card whatsapp">
-                <i class="fa-brands fa-whatsapp"></i>
-                <div class="social-info">
-                    <span>WhatsApp</span>
-                    <small>Support</small>
-                </div>
-            </a>
-            <a href="#" class="social-card telegram">
-                <i class="fa-brands fa-telegram"></i>
-                <div class="social-info">
-                    <span>Telegram</span>
-                    <small>Channel</small>
-                </div>
-            </a>
-            <a href="#" class="social-card youtube">
-                <i class="fa-brands fa-youtube"></i>
-                <div class="social-info">
-                    <span>Tutorial</span>
-                    <small>Watch Video</small>
-                </div>
-            </a>
-        </section>
-
-        <!-- Section Title -->
-        <div class="section-divider">
-            <span class="divider-line"></span>
-            <h2 class="section-title"><i class="fa-solid fa-fire"></i> FREE FIRE SERVICES</h2>
-            <span class="divider-line"></span>
+            <div class="product-card">
+                <span class="badge" style="background:#38a169;">BEST</span>
+                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Weekly" alt="Weekly">
+                <div class="product-title">WEEKLY / MONTHLY</div>
+                <div class="product-sub">In-Game / UID</div>
+            </div>
+            <div class="product-card">
+                <span class="badge">HOT</span>
+                <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Evo+Access" alt="Evo">
+                <div class="product-title">EVO ACCESS PASS</div>
+                <div class="product-sub">Special Offer</div>
+            </div>
         </div>
 
-        <!-- Game Catalog Grid -->
-        <section class="game-grid" id="gameCatalog">
-            
-            <!-- Game Card 1 -->
-            <div class="game-card" onclick="openGamePage('ff-uid')">
-                <div class="card-badge">AUTO</div>
-                <div class="card-img-wrapper">
-                    <img src="assets/images/ff-uid.png" alt="FF UID TOPUP">
-                </div>
-                <div class="card-details">
-                    <h3>FF UID TOPUP (BD)</h3>
-                    <p>Instant Delivery</p>
-                </div>
+        <!-- Category 2: Other Games & Services -->
+        <div class="section-title"><i class="fa-solid fa-cubes" style="color:#805ad5;"></i> Other Games & Vouchers</div>
+        <div class="grid-container">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150/805ad5/ffffff?text=PUBG" alt="PUBG">
+                <div class="product-title">PUBG UC TOPUP</div>
+                <div class="product-sub">Global / BD</div>
             </div>
-
-            <!-- Game Card 2 -->
-            <div class="game-card" onclick="openGamePage('unipin')">
-                <div class="card-badge">AUTO</div>
-                <div class="card-img-wrapper">
-                    <img src="assets/images/unipin.png" alt="UNIPIN VOUCHER">
-                </div>
-                <div class="card-details">
-                    <h3>UNIPIN VOUCHER</h3>
-                    <p>Code System</p>
-                </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/150/805ad5/ffffff?text=In-Game" alt="In-Game">
+                <div class="product-title">IN-GAME TOPUP</div>
+                <div class="product-sub">Password Login</div>
             </div>
+        </div>
+    </div>
 
-            <!-- Game Card 3 -->
-            <div class="game-card" onclick="openGamePage('membership')">
-                <div class="card-badge">BEST</div>
-                <div class="card-img-wrapper">
-                    <img src="assets/images/weekly.png" alt="WEEKLY MONTHLY">
-                </div>
-                <div class="card-details">
-                    <h3>WEEKLY MONTHLY</h3>
-                    <p>In-Game / UID</p>
-                </div>
-            </div>
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-wallet"></i>Add Fund</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-list-check"></i>My Orders</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-qrcode"></i>My Codes</a>
+        <a href="#" class="nav-item"><i class="fa-solid fa-user"></i>Account</a>
+    </div>
 
-            <!-- Game Card 4 -->
-            <div class="game-card" onclick="openGamePage('evo-pass')">
-                <div class="card-badge font-special">HOT</div>
-                <div class="card-img-wrapper">
-                    <img src="assets/images/evo.png" alt="EVO ACCESS">
-                </div>
-                <div class="card-details">
-                    <h3>EVO ACCESS PASS</h3>
-                    <p>Special Offer</p>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Dynamic Game TopUp Page Section (Initially Hidden) -->
-        <section class="topup-details-view" id="topupDetailsView" style="display: none;">
-            
-            <!-- Selected Game Header -->
-            <div class="selected-game-header">
-                <img src="assets/images/ff-uid.png" id="selectedGameImage" alt="Game Logo">
-                <div>
-                    <h2 id="selectedGameTitle">FF UID TOPUP (BD)</h2>
-                    <span class="category-tag"><i class="fa-solid fa-bolt"></i> Instant Automated</span>
-                </div>
-            </div>
-
-            <!-- Step 1: Select Recharge Package -->
-            <div class="step-card">
-                <div class="step-title">
-                    <span class="step-number">1</span>
-                    <h3>Select Recharge Package</h3>
-                </div>
-                <div class="package-grid" id="packageGrid">
-                    <!-- Dynamic Packages loaded via JS -->
-                    <div class="package-card" onclick="selectPackage(this, 38, '50 Diamond')">
-                        <div class="pkg-info">
-                            <i class="fa-solid fa-gem gem-icon"></i>
-                            <span>50 Diamond</span>
-                        </div>
-                        <div class="pkg-price">৳ 38</div>
-                    </div>
-                    <div class="package-card" onclick="selectPackage(this, 155, '240 Diamond')">
-                        <div class="pkg-info">
-                            <i class="fa-solid fa-gem gem-icon"></i>
-                            <span>240 Diamond</span>
-                        </div>
-                        <div class="pkg-price">৳ 155</div>
-                    </div>
-                    <div class="package-card" onclick="selectPackage(this, 385, '610 Diamond')">
-                        <div class="pkg-info">
-                            <i class="fa-solid fa-gem gem-icon"></i>
-                            <span>610 Diamond</span>
-                        </div>
-                        <div class="pkg-price">৳ 385</div>
-                    </div>
-                    <div class="package-card" onclick="selectPackage(this, 1140, '1850 Diamond')">
-                        <div class="pkg-info">
-                            <i class="fa-solid fa-gem gem-icon"></i>
-                            <span>1850 Diamond</span>
-                        </div>
-                        <div class="pkg-price">৳ 1140</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2: Account Info / Player ID -->
-            <div class="step-card">
-                <div class="step-title">
-                    <span class="step-number">2</span>
-                    <h3>Account Info</h3>
-                </div>
-                <div class="input-group">
-                    <label for="playerIdInput">Enter Player ID (UID)</label>
-                    <div class="input-wrapper">
-                        <input type="number" id="playerIdInput" placeholder="e.g. 4273364247" oninput="checkPlayerName()">
-                        <button class="verify-btn" onclick="checkPlayerName()"><i class="fa-solid fa-magnifying-glass"></i> Check</button>
-                    </div>
-                    <div class="player-name-banner" id="playerNameBanner" style="display: none;">
-                        <i class="fa-solid fa-circle-check"></i> Player Name: <strong id="fetchedPlayerName">RAHAT FF 71</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3: Payment Method Selection -->
-            <div class="step-card">
-                <div class="step-title">
-                    <span class="step-number">3</span>
-                    <h3>Payment Methods</h3>
-                </div>
-                <div class="payment-grid">
-                    
-                    <div class="payment-card active" onclick="selectPaymentMethod(this, 'wallet')">
-                        <div class="payment-badge-check"><i class="fa-solid fa-check"></i></div>
-                        <div class="pm-icon-title">
-                            <i class="fa-solid fa-wallet pm-wallet-icon"></i>
-                            <strong>Account Wallet</strong>
-                        </div>
-                        <div class="pm-tag">Wallet Pay (৳ 0)</div>
-                    </div>
-
-                    <div class="payment-card" onclick="selectPaymentMethod(this, 'auto-gateway')">
-                        <div class="payment-badge-check"><i class="fa-solid fa-check"></i></div>
-                        <div class="pm-icon-title">
-                            <img src="assets/images/bkash-nagad.png" alt="bKash Nagad Rocket" class="gateway-img">
-                            <strong>Instant Auto Pay</strong>
-                        </div>
-                        <div class="pm-tag">bKash / Nagad / Rocket</div>
-                    </div>
-
-                </div>
-
-                <div class="payment-summary-box">
-                    <p><i class="fa-solid fa-circle-info"></i> আপনার একাউন্ট ব্যালেন্স: <span id="summaryWalletBalance">৳ 0</span></p>
-                    <p><i class="fa-solid fa-cart-shopping"></i> প্রডাক্ট কিনতে আপনার প্রয়োজন: <span id="summaryTotalCost">৳ 0</span></p>
-                </div>
-
-                <button class="checkout-btn" onclick="processOrder()"><i class="fa-solid fa-bolt"></i> BUY NOW</button>
-            </div>
-
-            <!-- Terms & Rules -->
-            <div class="step-card rules-card">
-                <h4>Rules & Conditions</h4>
-                <ul>
-                    <li><i class="fa-solid fa-circle-dot"></i> শুধুমাত্র Bangladesh সার্ভারে ID Code দিয়ে টপ আপ হবে।</li>
-                    <li><i class="fa-solid fa-circle-dot"></i> Player ID Code ভুল দিয়ে Diamond না পেলে কর্তৃপক্ষ দায়ী নয়।</li>
-                </ul>
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Floating Help / Support Button -->
-    <a href="https://wa.me/8801700000000" target="_blank" class="floating-support">
-        <span>সাহায্য লাগবে?</span>
-        <i class="fa-solid fa-phone"></i>
-    </a>
-
-    <!-- Mobile Bottom Navigation Bar (Matching App UI) -->
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a href="#addfund" class="nav-item" onclick="openTab('addfund')">
-            <i class="fa-solid fa-wallet"></i>
-            <span>Add Fund</span>
-        </a>
-        <a href="#orders" class="nav-item" onclick="openTab('orders')">
-            <i class="fa-solid fa-bookmark"></i>
-            <span>My Orders</span>
-        </a>
-        <a href="#codes" class="nav-item" onclick="openTab('codes')">
-            <i class="fa-solid fa-border-all"></i>
-            <span>My Codes</span>
-        </a>
-        <a href="#account" class="nav-item" onclick="openTab('account')">
-            <i class="fa-solid fa-user"></i>
-            <span>Account</span>
-        </a>
-    </nav>
-
-    <!-- JavaScript Logic Connection -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/app.js"></script>
 </body>
-                    </html>                        
+                    </html>
+                    
