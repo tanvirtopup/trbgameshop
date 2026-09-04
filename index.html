@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRB TopUp - Professional Game Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Swiper CSS for Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         :root { --primary: #0066ff; --bg: #f4f6f9; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding-bottom: 70px; }
@@ -16,6 +17,11 @@
         .notice-bar { background: #1e293b; color: #fff; padding: 8px 12px; font-size: 13px; display: flex; align-items: center; gap: 8px; }
         .notice-tag { background: #0066ff; padding: 2px 8px; border-radius: 4px; font-size: 11px; }
         .container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        
+        /* Slider Styles */
+        .slider-container { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .swiper-slide img { width: 100%; height: 160px; object-fit: cover; display: block; }
+
         .quick-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
         .link-card { background: #fff; border-radius: 10px; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.03); text-decoration: none; color: #333; font-size: 12px; font-weight: 600; }
         .link-card i { font-size: 20px; margin-bottom: 5px; display: block; color: var(--primary); }
@@ -52,6 +58,19 @@
     </div>
 
     <div class="container">
+        <!-- Dynamic Image Slider -->
+        <div class="slider-container">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="slider-wrapper">
+                    <!-- Default Demo Slider (Replace with Firestore data) -->
+                    <div class="swiper-slide">
+                        <a href="#"><img src="https://via.placeholder.com/600x200/0066ff/ffffff?text=Special+Offer+Banner" alt="Banner"></a>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
         <!-- Quick Support Links -->
         <div class="quick-links">
             <a href="#" class="link-card"><i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>WhatsApp</a>
@@ -62,25 +81,25 @@
         <!-- Category 1: Free Fire Services -->
         <div class="section-title"><i class="fa-solid fa-fire" style="color:#e53e3e;"></i> Free Fire Services</div>
         <div class="grid-container">
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=ff_uid'">
                 <span class="badge">AUTO</span>
                 <img src="https://via.placeholder.com/150/0066ff/ffffff?text=FF+UID" alt="FF UID">
                 <div class="product-title">FF UID TOPUP (BD)</div>
                 <div class="product-sub">Instant Delivery</div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=unipin'">
                 <span class="badge">AUTO</span>
                 <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Unipin" alt="Unipin">
                 <div class="product-title">UNIPIN VOUCHER</div>
                 <div class="product-sub">Code System</div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=weekly'">
                 <span class="badge" style="background:#38a169;">BEST</span>
                 <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Weekly" alt="Weekly">
                 <div class="product-title">WEEKLY / MONTHLY</div>
                 <div class="product-sub">In-Game / UID</div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=evo'">
                 <span class="badge">HOT</span>
                 <img src="https://via.placeholder.com/150/0066ff/ffffff?text=Evo+Access" alt="Evo">
                 <div class="product-title">EVO ACCESS PASS</div>
@@ -91,12 +110,12 @@
         <!-- Category 2: Other Games & Services -->
         <div class="section-title"><i class="fa-solid fa-cubes" style="color:#805ad5;"></i> Other Games & Vouchers</div>
         <div class="grid-container">
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=pubg'">
                 <img src="https://via.placeholder.com/150/805ad5/ffffff?text=PUBG" alt="PUBG">
                 <div class="product-title">PUBG UC TOPUP</div>
                 <div class="product-sub">Global / BD</div>
             </div>
-            <div class="product-card">
+            <div class="product-card" onclick="location.href='product.html?id=ingame'">
                 <img src="https://via.placeholder.com/150/805ad5/ffffff?text=In-Game" alt="In-Game">
                 <div class="product-title">IN-GAME TOPUP</div>
                 <div class="product-sub">Password Login</div>
@@ -106,12 +125,15 @@
 
     <!-- Bottom Navigation Bar -->
     <div class="bottom-nav">
-        <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i>Home</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-wallet"></i>Add Fund</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-list-check"></i>My Orders</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-qrcode"></i>My Codes</a>
-        <a href="#" class="nav-item"><i class="fa-solid fa-user"></i>Account</a>
+        <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i>Home</a>
+        <a href="add-fund.html" class="nav-item"><i class="fa-solid fa-wallet"></i>Add Fund</a>
+        <a href="orders.html" class="nav-item"><i class="fa-solid fa-list-check"></i>My Orders</a>
+        <a href="codes.html" class="nav-item"><i class="fa-solid fa-qrcode"></i>My Codes</a>
+        <a href="account.html" class="nav-item"><i class="fa-solid fa-user"></i>Account</a>
     </div>
+
+    <!-- Swiper Slider JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -119,6 +141,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/app.js"></script>
+
+    <!-- Slider Initialization -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+    </script>
 </body>
-                    </html>
-                    
+                                       </html>
