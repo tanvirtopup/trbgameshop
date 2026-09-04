@@ -1,0 +1,340 @@
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --bg-color: #f4f6f9;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --accent-orange: #f59e0b;
+    --accent-green: #10b981;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    padding-bottom: 75px; /* Bottom Nav Offset */
+}
+
+/* Header UI */
+.top-header {
+    background: var(--card-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    padding: 12px 16px;
+}
+
+.header-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.logo-text span { color: var(--accent-orange); }
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wallet-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-btn {
+    background: var(--accent-orange);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Main Layout */
+.main-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 12px;
+}
+
+/* Notice Marquee */
+.notice-wrapper {
+    background: #1e293b;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.notice-badge {
+    background: var(--primary-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+.notice-text-container { font-size: 0.85rem; flex: 1; overflow: hidden; }
+.notice-close { background: none; border: none; color: #fff; cursor: pointer; }
+
+/* Quick Social Cards */
+.quick-social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.social-card {
+    background: white;
+    padding: 10px 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.social-card i { font-size: 1.4rem; }
+.social-card.whatsapp i { color: #25D366; }
+.social-card.telegram i { color: #0088cc; }
+.social-card.youtube i { color: #FF0000; }
+
+.social-info { display: flex; flex-direction: column; }
+.social-info span { font-weight: 600; font-size: 0.8rem; color: var(--text-dark); }
+.social-info small { font-size: 0.65rem; color: var(--text-muted); }
+
+/* Game Cards Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.game-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 8px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.game-card:hover { border-color: var(--primary-color); transform: translateY(-2px); }
+
+.card-badge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #ef4444;
+    color: #fff;
+    font-size: 0.6rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    border-radius: 8px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.card-details h3 { font-size: 0.75rem; margin-top: 5px; color: var(--text-dark); }
+.card-details p { font-size: 0.65rem; color: var(--text-muted); }
+
+/* Step-by-Step Package Section */
+.step-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.step-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.step-number {
+    background: var(--primary-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.package-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.package-card.selected {
+    border-color: var(--primary-color);
+    background: #f0f7ff;
+}
+
+.gem-icon { color: #0284c7; }
+.pkg-price { font-weight: 700; color: #d97706; }
+
+/* Input Fields */
+.input-wrapper { display: flex; gap: 8px; margin-top: 6px; }
+.input-wrapper input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    outline: none;
+}
+.verify-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.player-name-banner {
+    margin-top: 8px;
+    background: #dcfce7;
+    color: #15803d;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* Payment Methods */
+.payment-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.payment-card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+    cursor: pointer;
+}
+.payment-card.active { border-color: var(--primary-color); background: #f0f7ff; }
+.payment-badge-check { position: absolute; top: 6px; right: 6px; color: var(--primary-color); display: none; }
+.payment-card.active .payment-badge-check { display: block; }
+
+.gateway-img { height: 20px; }
+.pm-tag { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+
+.checkout-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+/* Floating WhatsApp / Phone */
+.floating-support {
+    position: fixed;
+    bottom: 80px;
+    right: 16px;
+    background: #ef4444;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    z-index: 999;
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.nav-item i { font-size: 1.2rem; margin-bottom: 2px; }
+.nav-item.active { color: var(--primary-color); font-weight: 600; }
+  
